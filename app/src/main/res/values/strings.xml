@@ -11,5 +11,5 @@
     <string name="round_tip">Round up tip?</string>
     <string name="how_was_service">How was the Service?</string>
     <string name="calculate_tip">Calculate</string>
-    <string name="tip_amount">Tip Amount</string>
+    <string name="tip_amount">Tip Amount: %s</string>
 </resources>
