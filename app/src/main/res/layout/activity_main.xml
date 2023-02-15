@@ -69,21 +69,22 @@
             android:id="@+id/custom_option"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Custom Value"
+            android:text="Custom Value (%)"
             />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/custom_option_box"
-            android:enabled="false"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:hint="Custom Value" >
+            android:hint="Custom Value"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/custom_value_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,6 +109,44 @@
     </RadioGroup>
 
     <ImageView
+        android:id="@+id/icon_number_of_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/ic_number_of_people"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/persons_question"
+        app:layout_constraintTop_toTopOf="@id/persons_question"
+        app:layout_constraintBottom_toBottomOf="@id/persons_question" />
+
+    <TextView
+        android:id="@+id/persons_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="How many people?"
+        app:layout_constraintStart_toEndOf="@id/icon_number_of_people"
+        app:layout_constraintTop_toBottomOf="@id/tip_options"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/persons_text_box"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:hint="Number of People"
+        app:layout_constraintTop_toBottomOf="@id/persons_question"
+        app:layout_constraintStart_toStartOf="@id/persons_question">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/persons_value_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
         android:id="@+id/icon_round_up"
         android:importantForAccessibility="no"
         android:layout_width="wrap_content"
@@ -124,11 +163,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:checked="false"
         android:text="@string/round_tip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon_round_up"
-        app:layout_constraintTop_toBottomOf="@id/tip_options" />
+        app:layout_constraintTop_toBottomOf="@id/persons_text_box" />
 
     <ImageView
         android:id="@+id/icon_round_down"
@@ -170,6 +210,24 @@
         tools:text="Tip Amount: $10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+
+    <TextView
+        android:id="@+id/total_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Total Amount: $100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tip_result" />
+
+    <TextView
+        android:id="@+id/total_per_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="Cost Per Person: $15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_result" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,6 @@
     <string name="how_was_service">How was the Service?</string>
     <string name="calculate_tip">Calculate</string>
     <string name="tip_amount">Tip Amount: %s</string>
+    <string name="total_amount">Total Amount: %s</string>
+    <string name="cost_per_person_amount">Cost Per Person: %s</string>
 </resources>

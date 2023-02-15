@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.customOptionBox.setOnClickListener { binding.customOptionBox.isEnabled = true }
         binding.calculateButton.setOnClickListener{ calculateTip() }
     }
 
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             displayTip(0.0)
             return
         }
-        val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
+        var tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
             R.id.custom_option -> customTip()
             R.id.option_twenty_percent -> 0.20
             R.id.option_eighteen_percent -> 0.18
@@ -35,8 +34,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         if (tipPercentage > 1) {
-            tipPercentage / 100
-            return
+            tipPercentage /= 100
         }
         var tip = tipPercentage * cost
         if(binding.roundUpSwitch.isChecked) {
@@ -46,12 +44,28 @@ class MainActivity : AppCompatActivity() {
             tip = kotlin.math.floor(tip)
         }
 
+        val total = cost + tip
+
         displayTip(tip)
+        displayTotal(total)
+        displayCostPerPerson(total)
     }
 
     private fun displayTip(tip : Double) {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+    }
+
+    private fun displayTotal(total : Double) {
+        val totalAmount = NumberFormat.getCurrencyInstance().format(total)
+        binding.totalResult.text = getString(R.string.total_amount, totalAmount)
+    }
+
+    private fun displayCostPerPerson(total : Double) {
+        val numOfPeople = binding.personsValueEditText.text.toString().toInt()
+        val costPerPerson = total / numOfPeople
+        val formattedCostPerPerson = NumberFormat.getCurrencyInstance().format(costPerPerson)
+        binding.totalPerPerson.text = getString(R.string.cost_per_person_amount, formattedCostPerPerson)
     }
 
     private fun customTip(): Double? {
