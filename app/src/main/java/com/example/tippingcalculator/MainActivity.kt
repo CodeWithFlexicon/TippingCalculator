@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.customOptionBox.setOnClickListener { binding.customOptionBox.isEnabled = true }
         binding.calculateButton.setOnClickListener{ calculateTip() }
     }
 
@@ -24,13 +25,25 @@ class MainActivity : AppCompatActivity() {
             return
         }
         val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
+            R.id.custom_option -> customTip()
             R.id.option_twenty_percent -> 0.20
             R.id.option_eighteen_percent -> 0.18
             else -> 0.15
         }
+        if (tipPercentage == null) {
+            displayTip(0.0)
+            return
+        }
+        if (tipPercentage > 1) {
+            tipPercentage / 100
+            return
+        }
         var tip = tipPercentage * cost
         if(binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
+        }
+        if(binding.roundDownSwitch.isChecked) {
+            tip = kotlin.math.floor(tip)
         }
 
         displayTip(tip)
@@ -40,4 +53,9 @@ class MainActivity : AppCompatActivity() {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
+
+    private fun customTip(): Double? {
+        return binding.customValueEditText.text.toString().toDoubleOrNull()
+    }
+
 }

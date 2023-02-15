@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2165" />
+        <entry key="app/src/main/res/drawable/ic_cost_of_service.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/ic_round_down.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/ic_round_up.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/ic_service.xml" value="0.1455" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>

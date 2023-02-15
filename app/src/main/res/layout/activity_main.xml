@@ -66,6 +66,28 @@
         app:layout_constraintTop_toBottomOf="@id/service_question">
 
         <RadioButton
+            android:id="@+id/custom_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Value"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/custom_option_box"
+            android:enabled="false"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:hint="Custom Value" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/custom_value_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioButton
             android:id="@+id/option_twenty_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,11 +124,34 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:checked="true"
+        android:checked="false"
         android:text="@string/round_tip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon_round_up"
         app:layout_constraintTop_toBottomOf="@id/tip_options" />
+
+    <ImageView
+        android:id="@+id/icon_round_down"
+        android:importantForAccessibility="no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_round_down"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/round_down_switch"
+        app:layout_constraintTop_toTopOf="@id/round_down_switch"
+        app:layout_constraintBottom_toBottomOf="@id/round_down_switch" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/round_down_switch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:checked="false"
+        android:text="Round down tip?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_round_down"
+        app:layout_constraintTop_toBottomOf="@id/round_up_switch"
+        />
 
     <Button
         android:id="@+id/calculate_button"
@@ -115,7 +160,7 @@
         android:text="@string/calculate_tip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+        app:layout_constraintTop_toBottomOf="@id/round_down_switch" />
 
     <TextView
         android:id="@+id/tip_result"
