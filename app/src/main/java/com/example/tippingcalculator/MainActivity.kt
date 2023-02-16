@@ -2,6 +2,13 @@ package com.example.tippingcalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStateManagerControl
+import androidx.viewpager.widget.ViewPager
 import com.example.tippingcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
 
