@@ -10,8 +10,10 @@
         <entry key="app/src/main/res/drawable/ic_round_up.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/ic_service.xml" value="0.1455" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_equal_meals.xml" value="0.34422492401215804" />
         <entry key="app/src/main/res/layout/fragment_equalcalculator.xml" value="0.34371833839918947" />
         <entry key="app/src/main/res/layout/fragment_thosedayscalculator.xml" value="0.34371833839918947" />
+        <entry key="app/src/main/res/layout/fragment_unequal_meals.xml" value="0.34422492401215804" />
       </map>
     </option>
   </component>
