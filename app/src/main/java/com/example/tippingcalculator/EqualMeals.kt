@@ -18,8 +18,8 @@ class EqualMeals : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEqualMealsBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
+        _binding = FragmentEqualMealsBinding.inflate(inflater, container, false)
         binding.calculateButton.setOnClickListener { calculateTip() }
         return binding.root
     }
@@ -86,11 +86,3 @@ class EqualMeals : Fragment() {
     }
 
 }
-
-/*
-private lateinit var binding: FragmentEqualMealsBinding
-binding = FragmentEqualMealsBinding.inflate(layoutInflater)
-binding.calculateButton.setOnClickListener{ calculateTip() }
-
-
- */

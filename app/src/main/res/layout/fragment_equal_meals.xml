@@ -5,14 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     tools:context=".EqualMeals"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/icon_cost_of_service"
@@ -31,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:hint="@string/cost_of_service"
-        app:layout_constraintTop_toTopOf="@id/icon_cost_of_service"
         app:layout_constraintBottom_toBottomOf="@id/icon_cost_of_service"
         app:layout_constraintStart_toEndOf="@id/icon_cost_of_service">
 
