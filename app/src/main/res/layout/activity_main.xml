@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="fill"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:title="Tipping Calculator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <com.google.android.material.tabs.TabLayout
@@ -29,7 +31,6 @@
             android:layout_height="wrap_content"
             app:tabBackground="@color/blue_500"
             app:tabGravity="fill"
-            app:tabMode="scrollable"
             app:tabTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
