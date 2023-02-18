@@ -1,10 +1,12 @@
 package com.example.tippingcalculator
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import com.example.tippingcalculator.databinding.FragmentEqualMealsBinding
 import java.text.NumberFormat
 
@@ -21,6 +23,9 @@ class EqualMeals : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentEqualMealsBinding.inflate(inflater, container, false)
         binding.calculateButton.setOnClickListener { calculateTip() }
+        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
+        binding.customValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
+        binding.personsValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
         return binding.root
     }
 
@@ -83,6 +88,16 @@ class EqualMeals : Fragment() {
 
     private fun customTip(): Double? {
         return binding.customValueEditText.text.toString().toDoubleOrNull()
+    }
+
+    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            val inputMethodManager =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            return true
+        }
+        return false
     }
 
 }

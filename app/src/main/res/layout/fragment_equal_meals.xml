@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         tools:context=".EqualMeals">
 
         <ImageView
@@ -52,6 +54,7 @@
 
         <TextView
             android:id="@+id/service_question"
+            style="@style/Widget.TippingCalculator.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -62,6 +65,7 @@
 
         <RadioGroup
             android:id="@+id/tip_options"
+            style="@style/Widget.TippingCalculator.CompoundButton.RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkedButton="@id/option_fifteen_percent"
@@ -159,6 +163,7 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/round_up_switch"
+            style="@style/Widget.TippingCalculator.CompoundButton.Switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -182,6 +187,7 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/round_down_switch"
+            style="@style/Widget.TippingCalculator.CompoundButton.Switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -202,6 +208,7 @@
 
         <TextView
             android:id="@+id/tip_result"
+            style="@style/Widget.TippingCalculator.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -211,6 +218,7 @@
 
         <TextView
             android:id="@+id/total_result"
+            style="@style/Widget.TippingCalculator.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -220,6 +228,7 @@
 
         <TextView
             android:id="@+id/total_per_person"
+            style="@style/Widget.TippingCalculator.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

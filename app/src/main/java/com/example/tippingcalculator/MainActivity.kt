@@ -1,8 +1,11 @@
 package com.example.tippingcalculator
 
+import android.content.Context
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 else -> { throw Resources.NotFoundException("Position Not Found : $index")}
             }
         }.attach()
-
     }
+
+
 }
