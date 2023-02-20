@@ -26,6 +26,18 @@ class EqualMeals : Fragment() {
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
         binding.customValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
         binding.personsValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
+        binding.roundUpSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.roundUpSwitch.isChecked = true
+                binding.roundDownSwitch.isChecked = false
+            }
+        }
+        binding.roundDownSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.roundDownSwitch.isChecked = true
+                binding.roundUpSwitch.isChecked = false
+            }
+        }
         return binding.root
     }
 
@@ -58,7 +70,7 @@ class EqualMeals : Fragment() {
         if(binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
-        if(binding.roundDownSwitch.isChecked) {
+        if (binding.roundDownSwitch.isChecked) {
             tip = kotlin.math.floor(tip)
         }
 
