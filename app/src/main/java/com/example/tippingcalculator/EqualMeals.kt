@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Switch
 import androidx.core.content.ContextCompat.getSystemService
 import com.example.tippingcalculator.databinding.FragmentEqualMealsBinding
 import java.text.NumberFormat
@@ -26,6 +30,7 @@ class EqualMeals : Fragment() {
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
         binding.customValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
         binding.personsValueEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
+        /*
         binding.roundUpSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 binding.roundUpSwitch.isChecked = true
@@ -37,7 +42,29 @@ class EqualMeals : Fragment() {
                 binding.roundDownSwitch.isChecked = true
                 binding.roundUpSwitch.isChecked = false
             }
+        }*/
+        val roundingOptions = resources.getStringArray(R.array.Rounding_Options)
+        val spinner: Spinner = binding.roundingSpinner
+
+        activity?.let {
+            ArrayAdapter.createFromResource(
+                it, R.array.Rounding_Options, android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+            }
         }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+        }
+
         return binding.root
     }
 
@@ -50,7 +77,7 @@ class EqualMeals : Fragment() {
         val stringInTextField = binding.costOfServiceEditText.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
         if (cost == null || cost == 0.0) {
-            displayTip(0.0)
+            displayTip(0.0, 0.0)
             return
         }
         var tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
@@ -60,30 +87,59 @@ class EqualMeals : Fragment() {
             else -> 0.15
         }
         if (tipPercentage == null) {
-            displayTip(0.0)
+            displayTip(0.0, 0.0)
             return
         }
         if (tipPercentage > 1) {
             tipPercentage /= 100
         }
         var tip = tipPercentage * cost
+        /*
         if(binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
         if (binding.roundDownSwitch.isChecked) {
             tip = kotlin.math.floor(tip)
         }
+        */
 
-        val total = cost + tip
+        var total = cost
 
-        displayTip(tip)
+        when (binding.roundingSpinner.selectedItem.toString()) {
+            "Round tip down" -> {
+                tip = kotlin.math.floor(tip)
+                tipPercentage = tip / cost
+                total += tip
+            }
+            "Round tip up" -> {
+                tip = kotlin.math.ceil(tip)
+                tipPercentage = tip / cost
+                total += tip
+            }
+            "Round total up" -> {
+                total += tip
+                total = kotlin.math.ceil(total)
+                tip = total - cost
+                tipPercentage = tip / cost
+            }
+            "Round total down" -> {
+                total += tip
+                total = kotlin.math.floor(total)
+                tip = total - cost
+                tipPercentage = tip / cost
+            }
+            else -> { total += tip }
+        }
+
+        displayTip(tip, tipPercentage)
         displayTotal(total)
         displayCostPerPerson(total)
     }
 
-    private fun displayTip(tip : Double) {
+    private fun displayTip(tip : Double, tipPercentage : Double) {
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+        val formattedTipPercent = NumberFormat.getPercentInstance().format(tipPercentage)
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip, formattedTipPercent)
     }
 
     private fun displayTotal(total : Double) {

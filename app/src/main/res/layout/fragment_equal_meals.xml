@@ -126,6 +126,7 @@
 
         <TextView
             android:id="@+id/persons_question"
+            style="@style/Widget.TippingCalculator.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -150,6 +151,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
         <ImageView
             android:id="@+id/icon_round_up"
             android:layout_width="wrap_content"
@@ -160,7 +162,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/round_up_switch"
             app:srcCompat="@drawable/ic_round_up" />
-
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/round_up_switch"
             style="@style/Widget.TippingCalculator.CompoundButton.Switch"
@@ -196,15 +197,49 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon_round_down"
             app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+        -->
+
+        <ImageView
+            android:id="@+id/icon_rounding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/rounding_question"
+            app:layout_constraintTop_toTopOf="@id/rounding_question"
+            app:layout_constraintBottom_toBottomOf="@id/rounding_question"
+            app:srcCompat="@drawable/ic_rounding"/>
+
+        <TextView
+            android:id="@+id/rounding_question"
+            style="@style/Widget.TippingCalculator.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Rounding Options"
+            app:layout_constraintStart_toEndOf="@id/icon_rounding"
+            app:layout_constraintTop_toBottomOf="@id/persons_text_box"
+            />
+
+
+        <Spinner
+            android:id="@+id/rounding_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/rounding_question"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/rounding_question"/>
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/calculate_tip"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/round_down_switch" />
+            app:layout_constraintTop_toBottomOf="@id/rounding_question" />
 
         <TextView
             android:id="@+id/tip_result"

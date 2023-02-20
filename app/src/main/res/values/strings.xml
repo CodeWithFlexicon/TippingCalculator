@@ -11,9 +11,16 @@
     <string name="round_tip">Round up tip?</string>
     <string name="how_was_service">How was the Service?</string>
     <string name="calculate_tip">Calculate</string>
-    <string name="tip_amount">Tip Amount: %s</string>
+    <string name="tip_amount">Tip Amount: %s (%s)</string>
     <string name="total_amount">Total Amount: %s</string>
     <string name="cost_per_person_amount">Cost Per Person: %s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Rounding_Options">
+        <item>Round tip up</item>
+        <item>Round tip down</item>
+        <item>Round total up</item>
+        <item>Round total down</item>
+        <item>None</item>
+    </string-array>
 </resources>
